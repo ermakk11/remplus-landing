@@ -8,93 +8,122 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #0d0d0d;
+      background-color: #111;
       color: #fff;
     }
     header {
-      background: #000;
-      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 15px 20px;
+      background-color: #000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    header h1 {
-      color: #fff;
-      margin: 0;
+    header .logo {
       font-size: 20px;
+      font-weight: bold;
+      color: #fff;
     }
-    .btn {
-      background: red;
+    header .btn {
+      background: #e10600;
       color: #fff;
       padding: 10px 20px;
-      border: none;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
     }
     .hero {
       text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+      padding: 80px 20px;
+      background: linear-gradient(180deg, #111, #1a1a1a);
     }
-    .hero h2 {
+    .hero h1 {
       font-size: 28px;
-      color: red;
-      text-shadow: 0 0 10px red;
+      color: #ff0000;
+      text-shadow: 0 0 15px #ff0000;
     }
     .hero p {
-      max-width: 600px;
-      margin: 20px auto;
       font-size: 16px;
+      margin: 15px 0 25px;
+      color: #ddd;
     }
-    .benefits, .form-section, .map {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .benefit {
-      background: #1a1a1a;
-      padding: 15px;
+    .hero .btn {
+      background: #ff0000;
+      color: #fff;
+      padding: 12px 25px;
       border-radius: 6px;
-      margin-bottom: 15px;
+      font-size: 16px;
+      text-decoration: none;
     }
-    .benefit::before {
-      content: "✔ ";
-      color: red;
-      font-weight: bold;
+    .features {
+      padding: 40px 20px;
+      background: #000;
+    }
+    .features h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .features .item {
+      margin: 10px 0;
+      padding: 12px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background: #1a1a1a;
+    }
+    .reviews {
+      padding: 40px 20px;
+      background: #111;
+    }
+    .reviews h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .map {
+      padding: 40px 20px;
+      background: #000;
+    }
+    .map h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-section {
+      padding: 40px 20px;
+      background: #111;
+    }
+    .form-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
     }
     form {
       display: flex;
       flex-direction: column;
+      max-width: 400px;
+      margin: 0 auto;
     }
     input, textarea {
-      margin: 10px 0;
+      margin: 8px 0;
       padding: 12px;
-      border: none;
       border-radius: 6px;
-      font-size: 14px;
+      border: none;
+      outline: none;
     }
     button {
-      margin-top: 10px;
+      background: #ff0000;
+      color: #fff;
       padding: 12px;
       border: none;
-      background: red;
-      color: #fff;
       border-radius: 6px;
+      margin-top: 10px;
       font-size: 16px;
-      font-weight: bold;
       cursor: pointer;
-    }
-    iframe {
-      width: 100%;
-      border: none;
-      border-radius: 6px;
     }
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 14px;
       background: #000;
+      font-size: 14px;
       color: #aaa;
     }
   </style>
@@ -102,49 +131,63 @@
 <body>
 
 <header>
-  <h1>РемПлюс</h1>
+  <div class="logo">РемПлюс</div>
   <a href="#form" class="btn">Оставить заявку</a>
 </header>
 
 <section class="hero">
-  <h2>Ремонтируем то, за что другие не берутся</h2>
+  <h1>Ремонтируем то, за что другие не берутся</h1>
   <p>От простой замены экрана до пайки микросхем. Бесплатная диагностика и гарантия на все работы. Используем проверенные запчасти.</p>
-  <div class="benefit">Честные цены без скрытых доплат</div>
-  <div class="benefit">Оплата только за результат</div>
-  <div class="benefit">Фиксированные цены — запчасть и работа одной суммой</div>
+  <ul style="list-style: none; padding: 0; margin: 0 0 20px;">
+    <li>✔ Честные цены без скрытых доплат</li>
+    <li>✔ Оплата только за результат</li>
+    <li>✔ Фиксированные цены — запчасть и работа одной суммой</li>
+  </ul>
   <a href="#form" class="btn">Записаться на ремонт</a>
 </section>
 
-<section class="benefits">
+<section class="features">
   <h2>Почему выбирают нас</h2>
-  <div class="benefit">Гарантия на ремонт до 6 месяцев</div>
-  <div class="benefit">Выполняем ремонты любой сложности</div>
-  <div class="benefit">Проверенные запчасти</div>
-  <div class="benefit">Удобное расположение в Нижнем Тагиле</div>
+  <div class="item">🔧 Гарантия на ремонт до 6 месяцев</div>
+  <div class="item">⚡ Выполняем ремонты любой сложности</div>
+  <div class="item">✅ Проверенные запчасти</div>
+  <div class="item">📍 Удобное расположение в Нижнем Тагиле</div>
 </section>
 
-<section class="reviews">
+<section id="reviews" class="reviews">
   <h2>Отзывы клиентов</h2>
-  <iframe src="https://yandex.ru/maps-reviews-widget/70000001051532539" width="100%" height="400" frameborder="0"></iframe>
-  <a href="https://yandex.ru/maps/org/remplus/70000001051532539" target="_blank" style="color:red; display:block; margin-top:10px; text-align:center;">
-    Читать все отзывы на Яндексе
-  </a>
-</section>
-
-<section id="form" class="form-section">
-  <h2>Оставить заявку</h2>
-  <form id="tgForm">
-    <input type="text" id="name" placeholder="Ваше имя" required>
-    <input type="text" id="phone" placeholder="Телефон" required>
-    <input type="text" id="device" placeholder="Марка и модель устройства" required>
-    <textarea id="problem" placeholder="Опишите проблему" required></textarea>
-    <button type="submit">Отправить в Telegram</button>
-  </form>
+  <iframe 
+      src="https://2gis.ru/ntagil/geo/70000001051532539/tab/reviews" 
+      width="100%" 
+      height="500" 
+      frameborder="0" 
+      style="border:0; border-radius: 10px;" 
+      allowfullscreen>
+  </iframe>
+  <p style="text-align: center; margin-top: 15px;">
+    <a href="https://2gis.ru/ntagil/geo/70000001051532539/tab/reviews" 
+       target="_blank" 
+       style="color: #ff0000; text-decoration: underline; font-weight: bold;">
+       Читать все отзывы на 2ГИС
+    </a>
+  </p>
 </section>
 
 <section class="map">
   <h2>Мы на карте</h2>
-  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A89db01f5c884f33a437f015b09f3677f7d5899bb97a4dfcf7f9f71c9a42c06b4&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A91c5a7a4aaf6f36b0bcd1f8b4acb5d9696e5a7f4d5a3e4c72f5467d13b6b1d4a&amp;source=constructor" 
+          width="100%" height="400" frameborder="0"></iframe>
+</section>
+
+<section id="form" class="form-section">
+  <h2>Оставить заявку</h2>
+  <form id="orderForm">
+    <input type="text" id="name" placeholder="Ваше имя" required>
+    <input type="tel" id="phone" placeholder="Телефон" required>
+    <input type="text" id="device" placeholder="Марка и модель устройства" required>
+    <textarea id="problem" rows="4" placeholder="Опишите проблему" required></textarea>
+    <button type="submit">Отправить в Telegram</button>
+  </form>
 </section>
 
 <footer>
@@ -152,19 +195,17 @@
 </footer>
 
 <script>
-  document.getElementById("tgForm").addEventListener("submit", function(e) {
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let device = document.getElementById("device").value;
-    let problem = document.getElementById("problem").value;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const device = document.getElementById('device').value;
+    const problem = document.getElementById('problem').value;
 
-    let username = "ermakov_remont"; // твой @username в Telegram
+    const message = `Заявка с сайта%0A👤 Имя: ${name}%0A📞 Телефон: ${phone}%0A📱 Устройство: ${device}%0A⚡ Проблема: ${problem}`;
+    const telegramLink = `https://t.me/ermakov_remont?text=${message}`;
 
-    let text = `📱 Новая заявка:\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📱 Устройство: ${device}\n⚡ Проблема: ${problem}`;
-    let url = `https://t.me/${username}?text=${encodeURIComponent(text)}`;
-
-    window.open(url, "_blank");
+    window.open(telegramLink, '_blank');
   });
 </script>
 
