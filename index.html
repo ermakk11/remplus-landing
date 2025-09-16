@@ -8,82 +8,151 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #000;
+      background: #0a0a0a;
       color: white;
+      line-height: 1.6;
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
-      background: #000;
+      padding: 15px 20px;
+      background: black;
     }
-    .logo img {
-      height: 50px;
+    header img {
+      height: 40px;
     }
-    .btn {
+    header a {
       background: red;
       color: white;
       padding: 10px 20px;
-      border-radius: 6px;
       text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #cc0000;
+      border-radius: 5px;
     }
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      padding: 100px 30px;
-      min-height: 80vh;
-      background: linear-gradient(135deg, #0d0d2d, #1a0033, #000);
+      padding: 60px 20px;
+      background: linear-gradient(180deg, #0a0a0a, #111122);
     }
     .hero h1 {
-      font-size: 42px;
+      font-size: 2.2em;
       color: red;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.8),
-                   0 0 20px rgba(255, 0, 0, 0.6),
-                   0 0 30px rgba(255, 0, 0, 0.4);
     }
-    .hero p {
-      font-size: 20px;
-      max-width: 600px;
-      margin-bottom: 30px;
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: red;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .services, .reviews {
+      display: grid;
+      gap: 20px;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .contacts {
+      text-align: center;
     }
     footer {
       text-align: center;
       padding: 20px;
       background: #111;
-      font-size: 14px;
-      margin-top: 40px;
+      font-size: 0.9em;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: none;
+    }
+    form button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">
-      <img src="logo.png.PNG" alt="РемПлюс — логотип">
-    </div>
-    <a href="#form" class="btn">Оставить заявку</a>
+    <img src="logo.png.PNG" alt="РемПлюс">
+    <a href="#form">Оставить заявку</a>
   </header>
 
   <section class="hero">
     <h1>Ремонт твоего смартфона</h1>
-    <p>
-      Срочная замена экранов, аккумуляторов и разъёмов.<br>
-      Пайка любой сложности. Бесплатная диагностика.
-    </p>
+    <p>Срочная замена экранов, аккумуляторов и разъёмов. Пайка любой сложности. Бесплатная диагностика.</p>
     <a href="#form" class="btn">Записаться</a>
+  </section>
+
+  <section>
+    <h2>Почему выбирают нас</h2>
+    <div class="services">
+      <div class="card">🔧 Гарантия на ремонт до 6 месяцев</div>
+      <div class="card">⚡ Срочно в день обращения</div>
+      <div class="card">✅ Проверенные запчасти</div>
+      <div class="card">📍 Нижний Тагил, удобное расположение</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Услуги и цены</h2>
+    <div class="services">
+      <div class="card">📱 Замена экрана — от 3000 ₽</div>
+      <div class="card">🔋 Замена аккумулятора — от 2000 ₽</div>
+      <div class="card">⚡ Замена разъёма зарядки — от 2000 ₽</div>
+      <div class="card">🔍 Диагностика — бесплатно</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Отзывы клиентов</h2>
+    <div class="reviews">
+      <div class="card">⭐⭐⭐⭐⭐ «Быстро заменили экран, всё работает отлично!»</div>
+      <div class="card">⭐⭐⭐⭐⭐ «Привез телефон с проблемой зарядки — починили за день.»</div>
+      <div class="card">⭐⭐⭐⭐⭐ «Хороший сервис, вежливые мастера. Советую!»</div>
+    </div>
+  </section>
+
+  <section id="form">
+    <h2>Оставить заявку</h2>
+    <form>
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="tel" placeholder="Телефон" required>
+      <input type="text" placeholder="Марка и модель устройства" required>
+      <textarea placeholder="Опишите проблему" rows="4"></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </section>
+
+  <section class="contacts">
+    <h2>Контакты</h2>
+    <p>📍 Нижний Тагил, ул. Циолковского, 39</p>
+    <p>📞 +7 912 041-21-21</p>
+    <p>📲 Telegram: <a href="https://t.me/ermakov_remont" style="color:red;">@ermakov_remont</a></p>
+    <iframe src="https://yandex.ru/map-widget/v1/-/CCUBYChW" width="100%" height="250" frameborder="0"></iframe>
   </section>
 
   <footer>
     © РемПлюс, 2025. Все права защищены.
   </footer>
+
 </body>
 </html>
