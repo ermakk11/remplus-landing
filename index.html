@@ -81,11 +81,6 @@
       color: red;
       font-weight: bold;
     }
-    .map {
-      padding: 30px 20px;
-      text-align: center;
-      background: #111;
-    }
     .form-section {
       padding: 30px 20px;
       text-align: center;
@@ -114,6 +109,12 @@
       cursor: pointer;
       font-weight: bold;
     }
+    .address {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 16px;
+    }
     footer {
       background: #111;
       text-align: center;
@@ -134,20 +135,14 @@
     <p>От простой замены экрана до пайки микросхем.  
     Бесплатная диагностика и гарантия на все работы.  
     Используем проверенные запчасти.</p>
-    <ul style="list-style:none; padding:0; margin:20px 0;">
-      <li>✔ Честные цены без скрытых доплат</li>
-      <li>✔ Оплата только за результат</li>
-      <li>✔ Фиксированные цены — запчасть и работа одной суммой</li>
-    </ul>
     <a href="#form" class="btn-main">Записаться на ремонт</a>
   </section>
 
   <section class="features">
     <h2>Почему выбирают нас</h2>
-    <div class="feature-item">🔧 Гарантия до 6 месяцев</div>
-    <div class="feature-item">⚡ Ремонт любой сложности</div>
-    <div class="feature-item">✅ Проверенные запчасти</div>
-    <div class="feature-item">📍 Удобное расположение в Нижнем Тагиле</div>
+    <div class="feature-item">✔ Честные цены без скрытых доплат</div>
+    <div class="feature-item">✔ Оплата только за результат</div>
+    <div class="feature-item">✔ Фиксированные цены — запчасть и работа одной суммой</div>
   </section>
 
   <section class="reviews">
@@ -157,25 +152,21 @@
     </a>
   </section>
 
-  <section class="map">
-    <h2>Мы на карте</h2>
-    <div style="width:100%; height:400px;">
-      <iframe 
-        src="https://yandex.ru/map-widget/v1/?ll=60.120568%2C57.916944&z=17&pt=60.120568,57.916944,pm2rdm"
-        width="100%" height="400" frameborder="0">
-      </iframe>
-    </div>
-  </section>
-
   <section class="form-section" id="form">
     <h2>Оставить заявку</h2>
-    <form id="repairForm">
+    <form onsubmit="sendToTelegram(event)">
       <input type="text" id="name" placeholder="Ваше имя" required>
-      <input type="tel" id="phone" placeholder="Телефон" required>
+      <input type="text" id="phone" placeholder="Телефон" required>
       <input type="text" id="device" placeholder="Марка и модель устройства" required>
       <textarea id="problem" placeholder="Опишите проблему" required></textarea>
       <button type="submit">Отправить в Telegram</button>
     </form>
+  </section>
+
+  <section class="address">
+    📍 Нижний Тагил, ул. Циолковского, 39  
+    📞 +7 912 041-21-21  
+    ✉ Telegram: @ermakov_remont
   </section>
 
   <footer>
@@ -183,19 +174,18 @@
   </footer>
 
   <script>
-    document.getElementById('repairForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      let name = document.getElementById('name').value;
-      let phone = document.getElementById('phone').value;
-      let device = document.getElementById('device').value;
-      let problem = document.getElementById('problem').value;
+    function sendToTelegram(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const device = document.getElementById("device").value;
+      const problem = document.getElementById("problem").value;
 
-      let text = `🛠 Заявка на ремонт:%0A👤 Имя: ${name}%0A📞 Телефон: ${phone}%0A📱 Устройство: ${device}%0A❗ Проблема: ${problem}`;
-      
-      // заменим на твой username
-      let telegramUrl = `https://t.me/ermakov_remont?text=${text}`;
-      window.open(telegramUrl, '_blank');
-    });
+      const message = `Новая заявка:\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📱 Устройство: ${device}\n⚡ Проблема: ${problem}`;
+
+      const telegramUrl = `https://t.me/ermakov_remont?text=${encodeURIComponent(message)}`;
+      window.open(telegramUrl, "_blank");
+    }
   </script>
 </body>
 </html>
