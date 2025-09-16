@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #000000, #1a1a2e);
+      background: #000;
       color: white;
     }
     header {
@@ -21,16 +21,6 @@
     .logo img {
       height: 50px;
     }
-    .contact {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .contact a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-    }
     .btn {
       background: red;
       color: white;
@@ -38,34 +28,44 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #cc0000;
     }
     .hero {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 50px 30px;
+      text-align: center;
+      padding: 100px 30px;
       min-height: 80vh;
+      background: url("hero-cat.jpeg.PNG") no-repeat center center/cover;
+      position: relative;
     }
-    .hero-content {
-      max-width: 50%;
-      z-index: 2;
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* затемнение для читаемости */
     }
-    .hero-content h1 {
-      font-size: 48px;
+    .hero h1, .hero p, .hero .btn {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 42px;
       color: red;
+      margin-bottom: 20px;
     }
-    .hero-content p {
+    .hero p {
       font-size: 20px;
-      margin: 20px 0;
-    }
-    .hero-media {
-      flex: 1;
-      background-image: url('hero-cat.jpeg.PNG');
-      background-size: cover;
-      background-position: center;
-      border-radius: 12px;
-      min-height: 400px;
-      margin-left: 20px;
+      max-width: 600px;
+      margin-bottom: 30px;
     }
     footer {
       text-align: center;
@@ -81,19 +81,16 @@
     <div class="logo">
       <img src="logo.png.PNG" alt="РемПлюс — логотип">
     </div>
-    <div class="contact">
-      <a href="tel:+79120412121">+7 912 041-21-21</a>
-      <a href="#form" class="btn">Оставить заявку</a>
-    </div>
+    <a href="#form" class="btn">Оставить заявку</a>
   </header>
 
   <section class="hero">
-    <div class="hero-content">
-      <h1>РемПлюс</h1>
-      <p>Ремонт твоего смартфона быстро и качественно</p>
-      <a href="#form" class="btn">Записаться</a>
-    </div>
-    <div class="hero-media"></div>
+    <h1>Ремонт твоего смартфона</h1>
+    <p>
+      Срочная замена экранов, аккумуляторов и разъёмов.  
+      Пайка любой сложности. Бесплатная диагностика.
+    </p>
+    <a href="#form" class="btn">Записаться</a>
   </section>
 
   <footer>
