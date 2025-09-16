@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>РемПлюс — ремонт смартфонов</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
@@ -36,16 +35,15 @@
       font-weight: bold;
     }
 
-    /* Новый блок hero */
+    /* Hero */
     .hero {
       text-align: center;
-      padding: 80px 20px;
+      padding: 70px 20px;
       background: linear-gradient(to bottom, #000000, #0a0a0a);
-      color: #fff;
     }
 
     .hero h1 {
-      font-size: 2.2em;
+      font-size: 2em;
       font-weight: 700;
       color: #ff1c1c;
       margin-bottom: 20px;
@@ -79,7 +77,6 @@
       position: absolute;
       left: 0;
       font-size: 1.2em;
-      line-height: 1;
     }
 
     .btn {
@@ -98,6 +95,88 @@
       background: #e60000;
       transform: scale(1.05);
     }
+
+    /* Форма */
+    .form-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: #111;
+    }
+
+    .form-section h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #ff1c1c;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e60000;
+    }
+
+    /* Отзывы */
+    .reviews {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .reviews h2 {
+      margin-bottom: 20px;
+    }
+
+    .review {
+      background: #111;
+      padding: 15px;
+      margin: 10px auto;
+      border-radius: 6px;
+      max-width: 500px;
+      font-style: italic;
+    }
+
+    /* Карта */
+    .map {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 0.9em;
+      color: #777;
+    }
   </style>
 </head>
 <body>
@@ -107,21 +186,74 @@
     <a href="#form" class="btn">Оставить заявку</a>
   </header>
 
-  <!-- Новый блок hero -->
+  <!-- Hero -->
   <section class="hero">
     <h1>Ремонтируем то, за что другие не берутся</h1>
     <p>От простой замены экрана до пайки микросхем.  
        Бесплатная диагностика и гарантия на все работы.  
        Используем проверенные запчасти.</p>
     <ul class="benefits">
-      <li>✔ Честные цены без скрытых доплат</li>
-      <li>✔ Оплата только за результат</li>
-      <li>✔ Фиксированные цены — запчасть и работа одной суммой</li>
+      <li>Честные цены без скрытых доплат</li>
+      <li>Оплата только за результат</li>
+      <li>Фиксированные цены — запчасть и работа одной суммой</li>
     </ul>
     <a href="#form" class="btn">Записаться на ремонт</a>
   </section>
 
-  <!-- Здесь дальше твои секции: форма, контакты и карта -->
+  <!-- Форма -->
+  <section id="form" class="form-section">
+    <h2>Оставить заявку</h2>
+    <form id="repairForm">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="tel" name="phone" placeholder="Телефон" required>
+      <input type="text" name="device" placeholder="Марка и модель устройства" required>
+      <textarea name="problem" placeholder="Опишите проблему" required></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </section>
+
+  <!-- Отзывы -->
+  <section class="reviews">
+    <h2>Отзывы наших клиентов</h2>
+    <div class="review">"Отличный сервис, починили быстро и качественно!"</div>
+    <div class="review">"Думал, что телефон уже не восстановить, но сделали!"</div>
+    <div class="review">"Приятные ребята, сразу видно — профессионалы."</div>
+  </section>
+
+  <!-- Карта -->
+  <section class="map">
+    <h2>Мы на карте</h2>
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5f3f19b4f8d2f33a4518d3d3c63ad6a3e3f888ffecb6d67c7a99aaae245d2c2a&amp;source=constructor" frameborder="0"></iframe>
+  </section>
+
+  <footer>
+    © РемПлюс, 2025. Все права защищены.
+  </footer>
+
+  <script>
+    document.getElementById("repairForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = this.name.value;
+      const phone = this.phone.value;
+      const device = this.device.value;
+      const problem = this.problem.value;
+
+      const message = `📱 Новая заявка!\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📱 Устройство: ${device}\n🔧 Проблема: ${problem}`;
+
+      // отправка напрямую в TG
+      const token = "ТОКЕН_ТВОЕГО_БОТА";
+      const chatId = "ТВОЙ_CHAT_ID";
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: "Markdown"
+        })
+      }).then(r => alert("Заявка отправлена!"));
+    });
+  </script>
 
 </body>
 </html>
