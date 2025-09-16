@@ -3,185 +3,277 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>РемПлюс – ремонт смартфонов</title>
+  <title>РемПлюс — ремонт смартфонов</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #000;
+      background-color: #000;
       color: #fff;
     }
+
     header {
       background: #111;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     header .logo {
       font-size: 20px;
       font-weight: bold;
       color: #fff;
     }
+
     header .btn {
       background: red;
-      color: white;
+      color: #fff;
       padding: 10px 20px;
       text-decoration: none;
       border-radius: 5px;
     }
+
     .hero {
       text-align: center;
       padding: 60px 20px;
-      background: #111;
+      background: linear-gradient(to bottom, #000, #111);
     }
+
     .hero h1 {
       font-size: 26px;
       color: red;
       text-shadow: 0 0 10px red;
     }
+
     .hero p {
       font-size: 16px;
-      margin-top: 15px;
-      color: #ddd;
-    }
-    .hero ul {
-      list-style: none;
-      padding: 0;
       margin: 20px 0;
     }
-    .hero ul li {
-      margin: 10px 0;
-    }
+
     .hero .btn {
-      display: inline-block;
-      margin-top: 20px;
       background: red;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
+      color: #fff;
+      padding: 12px 24px;
       border-radius: 5px;
+      text-decoration: none;
       font-weight: bold;
     }
-    section {
+
+    .features {
       padding: 40px 20px;
+      background: #111;
     }
-    section h2 {
+
+    .features h2 {
       text-align: center;
       margin-bottom: 20px;
     }
-    .reviews {
-      text-align: center;
+
+    .features ul {
+      list-style: none;
+      padding: 0;
     }
-    .reviews a {
-      color: red;
-      font-weight: bold;
-      text-decoration: none;
+
+    .features li {
+      margin: 10px 0;
+      padding: 10px;
+      background: #000;
+      border-left: 3px solid red;
     }
-    .reviews a:hover {
-      text-decoration: underline;
-    }
-    .form-section {
-      background: #111;
+
+    /* FAQ */
+    .faq {
+      background: #000;
       padding: 40px 20px;
     }
-    form {
-      max-width: 400px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    .faq h2 {
+      text-align: center;
+      margin-bottom: 20px;
     }
-    input, textarea {
-      padding: 12px;
+    .faq-item {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #333;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: red;
+      font-size: 16px;
+      text-align: left;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 10px 10px;
+      color: #ddd;
+    }
+
+    /* Форма */
+    .form {
+      padding: 40px 20px;
+      background: #111;
+    }
+
+    .form h2 {
+      text-align: center;
+    }
+
+    .form input, .form textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
       border: none;
       border-radius: 5px;
-      font-size: 14px;
     }
-    button {
+
+    .form button {
+      width: 100%;
       background: red;
-      color: white;
-      padding: 14px;
+      color: #fff;
+      padding: 12px;
       border: none;
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
     }
-    footer {
-      background: #111;
+
+    /* Контакты */
+    .contacts {
       text-align: center;
       padding: 20px;
+      background: #000;
       font-size: 14px;
-      color: #aaa;
-      line-height: 1.6;
     }
-    footer a {
+
+    .contacts a {
       color: #fff;
-      text-decoration: none;
-    }
-    footer a:hover {
       text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      background: #111;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">РемПлюс</div>
+    <a href="#form" class="btn">Оставить заявку</a>
+  </header>
 
-<header>
-  <div class="logo">РемПлюс</div>
-  <a href="#form" class="btn">Оставить заявку</a>
-</header>
+  <section class="hero">
+    <h1>Ремонтируем то, за что другие не берутся</h1>
+    <p>От простой замены экрана до пайки микросхем. Бесплатная диагностика и гарантия на все работы. Используем проверенные запчасти.</p>
+    <ul style="list-style:none; padding:0;">
+      <li>✔ Честные цены без скрытых доплат</li>
+      <li>✔ Оплата только за результат</li>
+      <li>✔ Фиксированные цены — запчасть и работа одной суммой</li>
+    </ul>
+    <a href="#form" class="btn">Записаться на ремонт</a>
+  </section>
 
-<section class="hero">
-  <h1>Ремонтируем то, за что другие не берутся</h1>
-  <p>От простой замены экрана до пайки микросхем.  
-  Бесплатная диагностика и гарантия на все работы.  
-  Используем проверенные запчасти.</p>
-  <ul>
-    <li>✔ Честные цены без скрытых доплат</li>
-    <li>✔ Оплата только за результат</li>
-    <li>✔ Фиксированные цены — запчасть и работа одной суммой</li>
-  </ul>
-  <a href="#form" class="btn">Записаться на ремонт</a>
-</section>
+  <section class="features">
+    <h2>Почему выбирают нас</h2>
+    <ul>
+      <li>🔧 Гарантия на ремонт до 6 месяцев</li>
+      <li>⚡ Выполняем ремонты любой сложности</li>
+      <li>✅ Проверенные запчасти</li>
+      <li>📍 Удобное расположение в Нижнем Тагиле</li>
+    </ul>
+  </section>
 
-<section class="reviews">
-  <h2>Отзывы клиентов</h2>
-  <a href="https://2gis.ru/ntagil/geo/70000001051532539" target="_blank">
-    Читать все отзывы на 2ГИС
-  </a>
-</section>
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Часто задаваемые вопросы</h2>
+    <div class="faq-item">
+      <button class="faq-question">Сколько стоит диагностика?</button>
+      <div class="faq-answer">
+        <p>Диагностика у нас бесплатная. Вы оплачиваете только ремонт, если соглашаетесь на него.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Сколько времени занимает ремонт?</button>
+      <div class="faq-answer">
+        <p>Простые ремонты выполняем в день обращения. Сложные случаи требуют больше времени, но мы всегда согласовываем сроки заранее.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Даете ли вы гарантию?</button>
+      <div class="faq-answer">
+        <p>Да, гарантия на все работы до 6 месяцев в зависимости от вида ремонта.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Какие запчасти вы используете?</button>
+      <div class="faq-answer">
+        <p>Мы используем только проверенные запчасти с гарантией качества.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="form" class="form-section">
-  <h2>Оставить заявку</h2>
-  <form onsubmit="sendToTelegram(event)">
-    <input type="text" id="name" placeholder="Ваше имя" required>
-    <input type="text" id="phone" placeholder="Телефон" required>
-    <input type="text" id="device" placeholder="Марка и модель устройства" required>
-    <textarea id="problem" rows="4" placeholder="Опишите проблему" required></textarea>
-    <button type="submit">Отправить в Telegram</button>
-  </form>
-</section>
+  <!-- Отзывы -->
+  <section class="reviews">
+    <h2 style="text-align:center;">Отзывы клиентов</h2>
+    <p style="text-align:center;">
+      <a href="https://2gis.ru/ntagil/geo/70000001051532539" target="_blank" style="color:red; text-decoration:underline;">
+        Читать все отзывы на 2ГИС
+      </a>
+    </p>
+  </section>
 
-<footer>
-  📍 Нижний Тагил, ул. Циолковского, 39 <br>
-  📞 <a href="tel:+79120412121">+7 912 041-21-21</a> <br>
-  ✉ Telegram: <a href="https://t.me/ermakov_remont" target="_blank">@ermakov_remont</a> <br><br>
-  © РемПлюс, 2025. Все права защищены.
-</footer>
+  <!-- Форма -->
+  <section class="form" id="form">
+    <h2>Оставить заявку</h2>
+    <form onsubmit="sendToTelegram(event)">
+      <input type="text" id="name" placeholder="Ваше имя" required>
+      <input type="text" id="phone" placeholder="Телефон" required>
+      <input type="text" id="device" placeholder="Марка и модель устройства" required>
+      <textarea id="problem" rows="4" placeholder="Опишите проблему" required></textarea>
+      <button type="submit">Отправить в Telegram</button>
+    </form>
+  </section>
 
-<script>
-  function sendToTelegram(event) {
-    event.preventDefault();
-    let name = document.getElementById('name').value;
-    let phone = document.getElementById('phone').value;
-    let device = document.getElementById('device').value;
-    let problem = document.getElementById('problem').value;
+  <!-- Контакты -->
+  <section class="contacts">
+    📍 Нижний Тагил, ул. Циолковского, 39 <br>
+    📞 <a href="tel:+79120412121">+7 912 041-21-21</a> <br>
+    ✉️ Telegram: <a href="https://t.me/ermakov_remont" target="_blank">@ermakov_remont</a>
+  </section>
 
-    let message = `Заявка на ремонт:%0AИмя: ${name}%0AТелефон: ${phone}%0AУстройство: ${device}%0AПроблема: ${problem}`;
+  <footer>
+    © РемПлюс, 2025. Все права защищены.
+  </footer>
 
-    window.open(`https://t.me/ermakov_remont?text=${message}`, '_blank');
-  }
-</script>
+  <script>
+    // Скрипт для FAQ
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
 
+    // Отправка заявки в Telegram (через открытие диалога)
+    function sendToTelegram(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const device = document.getElementById('device').value;
+      const problem = document.getElementById('problem').value;
+
+      const message = `Заявка на ремонт:%0AИмя: ${name}%0AТелефон: ${phone}%0AУстройство: ${device}%0AПроблема: ${problem}`;
+      window.open(`https://t.me/ermakov_remont?text=${message}`, '_blank');
+    }
+  </script>
 </body>
 </html>
