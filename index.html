@@ -11,7 +11,7 @@
       background: #0a0a0a;
       color: white;
       line-height: 1.6;
-      scroll-behavior: smooth; /* плавный скролл */
+      scroll-behavior: smooth;
     }
     header {
       display: flex;
@@ -101,16 +101,20 @@
   </header>
 
   <section class="hero">
-    <h1>Ремонт твоего смартфона</h1>
-    <p>Срочная замена экранов, аккумуляторов и разъёмов. Пайка любой сложности. Бесплатная диагностика.</p>
-    <a href="#form" class="btn">Записаться</a>
+    <h1>Ремонтируем то, что другие не берутся</h1>
+    <p>
+      От простой замены экрана до пайки микросхем.<br>
+      Бесплатная диагностика и гарантия на все работы.<br>
+      Используем проверенные запчасти.
+    </p>
+    <a href="#form" class="btn">Записаться на ремонт</a>
   </section>
 
   <section>
     <h2>Почему выбирают нас</h2>
     <div class="services">
       <div class="card">🔧 Гарантия на ремонт до 6 месяцев</div>
-      <div class="card">⚡ Срочно в день обращения</div>
+      <div class="card">⚡ Выполняем ремонты любой сложности</div>
       <div class="card">✅ Проверенные запчасти</div>
       <div class="card">📍 Нижний Тагил, удобное расположение</div>
     </div>
@@ -159,11 +163,6 @@
   </footer>
 
   <script>
-    // замените на свой токен и chat_id
-    const BOT_TOKEN = "8238890929:AAG3tnUSJc4YY4xyZQJXeRNWEQPUW4rg2VM";
-    const CHAT_ID = "437753009"; // твой id
-    const URL_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-
     document.getElementById("orderForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const name = document.getElementById("name").value;
@@ -171,25 +170,9 @@
       const model = document.getElementById("model").value;
       const problem = document.getElementById("problem").value;
 
-      const message = `📲 Новая заявка с сайта\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📱 Устройство: ${model}\n❗ Проблема: ${problem}`;
+      const msg = `Новая заявка:%0A👤 Имя: ${name}%0A📞 Телефон: ${phone}%0A📱 Устройство: ${model}%0A❗ Проблема: ${problem}`;
 
-      fetch(URL_API, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: message,
-          parse_mode: "HTML"
-        })
-      })
-      .then(res => {
-        if(res.ok){
-          alert("✅ Заявка отправлена! Мы свяжемся с вами.");
-          document.getElementById("orderForm").reset();
-        } else {
-          alert("❌ Ошибка при отправке. Попробуйте снова.");
-        }
-      });
+      window.location.href = `https://t.me/ermakov_remont?text=${msg}`;
     });
   </script>
 
