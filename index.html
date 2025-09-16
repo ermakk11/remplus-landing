@@ -11,6 +11,7 @@
       background: #0a0a0a;
       color: white;
       line-height: 1.6;
+      scroll-behavior: smooth; /* плавный скролл */
     }
     header {
       display: flex;
@@ -19,8 +20,10 @@
       padding: 15px 20px;
       background: black;
     }
-    header img {
-      height: 40px;
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: white;
     }
     header a {
       background: red;
@@ -37,6 +40,7 @@
     .hero h1 {
       font-size: 2.2em;
       color: red;
+      text-shadow: 0 0 10px rgba(255,0,0,0.8);
     }
     .btn {
       display: inline-block;
@@ -92,7 +96,7 @@
 <body>
 
   <header>
-    <img src="logo.png.PNG" alt="РемПлюс">
+    <div class="logo">РемПлюс</div>
     <a href="#form">Оставить заявку</a>
   </header>
 
@@ -133,11 +137,11 @@
 
   <section id="form">
     <h2>Оставить заявку</h2>
-    <form>
-      <input type="text" placeholder="Ваше имя" required>
-      <input type="tel" placeholder="Телефон" required>
-      <input type="text" placeholder="Марка и модель устройства" required>
-      <textarea placeholder="Опишите проблему" rows="4"></textarea>
+    <form id="orderForm">
+      <input type="text" id="name" placeholder="Ваше имя" required>
+      <input type="tel" id="phone" placeholder="Телефон" required>
+      <input type="text" id="model" placeholder="Марка и модель устройства" required>
+      <textarea id="problem" placeholder="Опишите проблему" rows="4"></textarea>
       <button type="submit">Отправить</button>
     </form>
   </section>
@@ -145,14 +149,49 @@
   <section class="contacts">
     <h2>Контакты</h2>
     <p>📍 Нижний Тагил, ул. Циолковского, 39</p>
-    <p>📞 +7 912 041-21-21</p>
     <p>📲 Telegram: <a href="https://t.me/ermakov_remont" style="color:red;">@ermakov_remont</a></p>
-    <iframe src="https://yandex.ru/map-widget/v1/-/CCUBYChW" width="100%" height="250" frameborder="0"></iframe>
+    <p>📞 +7 912 041-21-21</p>
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A652ddbb82c1eaf548d94b6d2b6f4b0b657d1aeb5a6adab029a2e31f8fdd5a43c&amp;source=constructor" width="100%" height="350" frameborder="0"></iframe>
   </section>
 
   <footer>
     © РемПлюс, 2025. Все права защищены.
   </footer>
+
+  <script>
+    // замените на свой токен и chat_id
+    const BOT_TOKEN = "8238890929:AAG3tnUSJc4YY4xyZQJXeRNWEQPUW4rg2VM";
+    const CHAT_ID = "437753009"; // твой id
+    const URL_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const model = document.getElementById("model").value;
+      const problem = document.getElementById("problem").value;
+
+      const message = `📲 Новая заявка с сайта\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📱 Устройство: ${model}\n❗ Проблема: ${problem}`;
+
+      fetch(URL_API, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: message,
+          parse_mode: "HTML"
+        })
+      })
+      .then(res => {
+        if(res.ok){
+          alert("✅ Заявка отправлена! Мы свяжемся с вами.");
+          document.getElementById("orderForm").reset();
+        } else {
+          alert("❌ Ошибка при отправке. Попробуйте снова.");
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
