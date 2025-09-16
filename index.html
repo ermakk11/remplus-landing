@@ -3,67 +3,82 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>РемПлюс — ремонт смартфонов и техники в Нижнем Тагиле</title>
-  <meta name="description" content="РемПлюс — ремонт смартфонов. Замена экранов, аккумуляторов, разъёмов. Бесплатная диагностика. Нижний Тагил." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>РемПлюс — ремонт смартфонов в Нижнем Тагиле</title>
+  <meta name="description" content="РемПлюс — ремонт смартфонов и техники. Замена экранов, аккумуляторов, разъёмов. Бесплатная диагностика. Нижний Тагил.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg:#0b0c10;          /* тёмный фон */
-      --card:#141414;        /* карточки */
-      --text:#ffffff;        /* основной текст */
-      --muted:#cccccc;       /* вторичный текст */
-      --accent:#e53935;      /* 🔴 красный акцент */
-      --accent-2:#ff5252;    /* светлее для hover */
+    :root{
+      --bg:#0b0c10;           /* базовый фон */
+      --text:#ffffff;         /* основной текст */
+      --muted:#cfcfcf;        /* вторичный текст */
+      --card:#141414;         /* карточки */
+      --accent:#e53935;       /* красный */
+      --accent-2:#ff5252;     /* красный hover */
       --radius:18px;
-      --shadow:0 12px 28px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+      --shadow:0 12px 28px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text); background:var(--bg);
+      /* космический фон + градиент поверх */
+      background-image:
+        radial-gradient(1200px 800px at 70% -20%, rgba(255,82,82,.25) 0%, rgba(255,82,82,0) 55%),
+        radial-gradient(900px 700px at 10% 110%, rgba(130,150,255,.20) 0%, rgba(130,150,255,0) 60%),
+        linear-gradient(180deg, #0b0c10 0%, #0b0c10 35%, #0c0f1a 100%);
+      background-attachment: fixed;
     }
+
+    /* Layout */
+    .container{max-width:1180px; margin:0 auto; padding:0 20px}
     a{color:inherit; text-decoration:none}
-    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+
+    /* Header */
     header{
-      position:sticky; top:0; z-index:10; backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.1);
-      background:rgba(20,20,20,.9);
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(8,8,10,.85), rgba(8,8,10,.55));
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800;}
-    .logo{
-      width:36px; height:36px; border-radius:10px;
-      background:var(--accent);
-      box-shadow:var(--shadow);
-    }
-    .brand-title{font-size:20px}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{height:36px; width:auto; display:block}
+    .brand-title{font-weight:800; font-size:20px; letter-spacing:.2px}
     .nav-cta{display:flex; gap:10px; align-items:center}
     .btn, button{
       appearance:none; border:0; cursor:pointer; font-weight:700;
       color:#fff; background:var(--accent); padding:12px 18px; border-radius:14px;
-      box-shadow:0 10px 24px rgba(229,57,53,.35), inset 0 1px 0 rgba(255,255,255,.25);
+      box-shadow:0 10px 24px rgba(229,57,53,.35), inset 0 1px 0 rgba(255,255,255,.2);
       transition:transform .08s ease, background .2s ease;
+      white-space:nowrap
     }
     .btn:hover{background:var(--accent-2); transform:translateY(-1px)}
     .btn-outline{
-      background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.2);
-      padding:10px 16px; border-radius:12px;
+      background:transparent; color:var(--text);
+      border:1px solid rgba(255,255,255,.2); padding:10px 16px; border-radius:12px
     }
-    .hero{padding:72px 0 48px}
-    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center}
-    .h1{font-size:40px; line-height:1.1; margin:0 0 14px; font-weight:800}
+
+    /* Hero */
+    .hero{padding:72px 0 48px; position:relative; overflow:hidden}
+    .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:28px; align-items:center}
+    .h1{font-size:42px; line-height:1.1; margin:0 0 14px; font-weight:800}
     .p-lg{font-size:18px; color:var(--muted); margin:0 0 22px}
-    .card{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:var(--radius); box-shadow:var(--shadow); padding:22px;
+    .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 0}
+    .badge{font-size:13px; border:1px solid rgba(255,255,255,.18); padding:8px 10px; border-radius:12px; background:rgba(255,255,255,.05)}
+    .hero-media{
+      position:relative; min-height:360px; border-radius:20px; overflow:hidden;
+      box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.08);
+      background:#0c0f1a url('assets/hero-cat.jpg') center/cover no-repeat;
     }
-    .service-badges{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 0}
-    .badge{
-      font-size:13px; color:#fff; border:1px solid rgba(255,255,255,.2); padding:8px 10px; border-radius:12px;
-      background:rgba(255,255,255,.05)
+    .media-overlay{
+      position:absolute; inset:0;
+      background:radial-gradient(800px 520px at 75% 20%, rgba(229,57,53,.25) 0%, rgba(229,57,53,.06) 42%, rgba(12,15,26,.8) 100%);
+      pointer-events:none;
     }
+
+    /* Card form */
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px}
     .form{display:grid; gap:12px}
     input, textarea{
       width:100%; padding:14px; border-radius:12px;
@@ -73,14 +88,15 @@
     textarea{min-height:96px; resize:vertical}
     .hint{font-size:12px; color:var(--muted)}
     .contacts{display:grid; gap:10px; margin-top:12px}
-    .contact{
-      padding:12px; background:#0f1117; border:1px solid rgba(255,255,255,.2);
-      border-radius:12px; color:var(--muted)
-    }
+    .contact{padding:12px; background:#0f1117; border:1px solid rgba(255,255,255,.2); border-radius:12px; color:var(--muted)}
+
     footer{padding:36px 0; color:var(--muted); text-align:center}
-    @media (max-width:920px){
+
+    /* Responsive */
+    @media (max-width:1024px){
       .hero-grid{grid-template-columns:1fr}
-      .h1{font-size:32px}
+      .hero-media{min-height:300px}
+      .h1{font-size:34px}
     }
   </style>
 </head>
@@ -90,7 +106,8 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <!-- логотип -->
+        <img src="assets/logo.png" alt="РемПлюс — логотип" />
         <div class="brand-title">РемПлюс</div>
       </div>
       <div class="nav-cta">
@@ -103,33 +120,38 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container hero-grid">
+      <!-- Текстовый блок -->
       <div>
-        <h1 class="h1">РемПлюс — ремонт смартфонов и техники в&nbsp;Нижнем Тагиле</h1>
-        <p class="p-lg">Замена экранов, аккумуляторов и разъёмов. Пайка любой сложности. Бесплатная диагностика.</p>
-        <div class="service-badges">
+        <h1 class="h1">Ремонт твоего смартфона</h1>
+        <p class="p-lg">Срочная замена экранов, аккумуляторов и разъёмов. Пайка любой сложности. Бесплатная диагностика.</p>
+        <div class="badge-row">
           <span class="badge">🔧 Гарантия на ремонт</span>
-          <span class="badge">⚡ Срочный ремонт</span>
+          <span class="badge">⚡ Срочно в день обращения</span>
           <span class="badge">✅ Проверенные запчасти</span>
+        </div>
+
+        <!-- Форма в карточке -->
+        <div class="card" id="request" style="margin-top:18px">
+          <h3 style="margin:0 0 12px">Оставить заявку</h3>
+          <form class="form" id="lead-form">
+            <input type="text" id="name" placeholder="Ваше имя" required>
+            <input type="tel" id="phone" placeholder="Телефон" required>
+            <input type="text" id="model" placeholder="Марка и модель устройства" required>
+            <textarea id="problem" placeholder="Опишите проблему" required></textarea>
+            <button class="btn" type="submit">Отправить</button>
+            <div class="hint">После клика откроется Telegram-чат с предзаполненным сообщением.</div>
+          </form>
+          <div class="contacts">
+            <div class="contact">📍 Нижний Тагил, ул. Циолковского, 39</div>
+            <a class="contact" href="https://t.me/ermakov_remont" target="_blank" rel="noopener">✈️ Telegram: @ermakov_remont</a>
+            <a class="contact" href="tel:+79120412121">📞 +7 912 041-21-21</a>
+          </div>
         </div>
       </div>
 
-      <!-- Форма заявки -->
-      <div class="card" id="request">
-        <h3 style="margin:0 0 12px">Оставить заявку</h3>
-        <form class="form" id="lead-form">
-          <input type="text" id="name" placeholder="Ваше имя" required>
-          <input type="tel" id="phone" placeholder="Телефон" required>
-          <input type="text" id="model" placeholder="Марка и модель устройства" required>
-          <textarea id="problem" placeholder="Опишите проблему" required></textarea>
-          <button class="btn" type="submit">Отправить</button>
-          <div class="hint">Нажимая «Отправить», вы перейдёте в Telegram, сообщение заполнится автоматически.</div>
-        </form>
-
-        <div class="contacts">
-          <div class="contact">📍 г. Нижний Тагил, ул. Циолковского, 39</div>
-          <a class="contact" href="https://t.me/ermakov_remont" target="_blank" rel="noopener">✈️ Telegram: @ermakov_remont</a>
-          <a class="contact" href="tel:+79120412121">📞 +7 912 041-21-21</a>
-        </div>
+      <!-- Визуал с котом / космосом -->
+      <div class="hero-media">
+        <div class="media-overlay"></div>
       </div>
     </div>
   </section>
@@ -139,13 +161,12 @@
   </footer>
 
   <script>
-    // текущий год в футере
+    // год в футере
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // deep link в Telegram
+    // deep-link в Telegram с предзаполненным текстом
     const tgUser = 'ermakov_remont';
-    const form = document.getElementById('lead-form');
-    form.addEventListener('submit', (e) => {
+    document.getElementById('lead-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
