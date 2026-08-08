@@ -1,279 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>РемПлюс — ремонт смартфонов</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-
-    header {
-      background: #111;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    header .logo {
-      font-size: 20px;
-      font-weight: bold;
-      color: #fff;
-    }
-
-    header .btn {
-      background: red;
-      color: #fff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to bottom, #000, #111);
-    }
-
-    .hero h1 {
-      font-size: 26px;
-      color: red;
-      text-shadow: 0 0 10px red;
-    }
-
-    .hero p {
-      font-size: 16px;
-      margin: 20px 0;
-    }
-
-    .hero .btn {
-      background: red;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .features {
-      padding: 40px 20px;
-      background: #111;
-    }
-
-    .features h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .features ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .features li {
-      margin: 10px 0;
-      padding: 10px;
-      background: #000;
-      border-left: 3px solid red;
-    }
-
-    /* FAQ */
-    .faq {
-      background: #000;
-      padding: 40px 20px;
-    }
-    .faq h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .faq-item {
-      margin-bottom: 10px;
-      border-bottom: 1px solid #333;
-    }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      color: red;
-      font-size: 16px;
-      text-align: left;
-      padding: 10px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .faq-answer {
-      display: none;
-      padding: 0 10px 10px;
-      color: #ddd;
-    }
-
-    /* Форма */
-    .form {
-      padding: 40px 20px;
-      background: #111;
-    }
-
-    .form h2 {
-      text-align: center;
-    }
-
-    .form input, .form textarea {
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .form button {
-      width: 100%;
-      background: red;
-      color: #fff;
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    /* Контакты */
-    .contacts {
-      text-align: center;
-      padding: 20px;
-      background: #000;
-      font-size: 14px;
-    }
-
-    .contacts a {
-      color: #fff;
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 12px;
-      background: #111;
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>РемПлюс — ремонт смартфонов в Нижнем Тагиле</title>
+  <meta name="description" content="Сервисный центр РемПлюс: ремонт телефонов любой сложности. Нижний Тагил, ул. Циолковского, 39.">
+  <meta property="og:title" content="РемПлюс — ремонт смартфонов">
+  <meta property="og:description" content="Сервисный центр в Нижнем Тагиле, ул. Циолковского, 39.">
+  <meta property="og:image" content="og.png">
+  <link rel="icon" href="remplus-logo.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="logo">РемПлюс</div>
-    <a href="#form" class="btn">Оставить заявку</a>
+<main>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="РемПлюс — на главную"><img class="brand-logo" src="remplus-logo.png" alt="Логотип РемПлюс"><span class="brand-copy">РемПлюс<small>сервисный центр</small></span></a>
+    <nav aria-label="Основная навигация"><a href="#services">Услуги</a><a href="#process">Как работаем</a><a href="#contacts">Контакты</a></nav>
+    <a class="header-cta" href="tel:+79120412121">+7 912 041-21-21</a>
   </header>
 
-  <section class="hero">
-    <h1>Ремонтируем то, за что другие не берутся</h1>
-    <p>От простой замены экрана до пайки микросхем. Бесплатная диагностика и гарантия на все работы. Используем проверенные запчасти.</p>
-    <ul style="list-style:none; padding:0;">
-      <li>✔ Честные цены без скрытых доплат</li>
-      <li>✔ Оплата только за результат</li>
-      <li>✔ Фиксированные цены — запчасть и работа одной суммой</li>
-    </ul>
-    <a href="#form" class="btn">Записаться на ремонт</a>
-  </section>
-
-  <section class="features">
-    <h2>Почему выбирают нас</h2>
-    <ul>
-      <li>🔧 Гарантия на ремонт до 6 месяцев</li>
-      <li>⚡ Выполняем ремонты любой сложности</li>
-      <li>✅ Проверенные запчасти</li>
-      <li>📍 Удобное расположение в Нижнем Тагиле</li>
-    </ul>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq">
-    <h2>Часто задаваемые вопросы</h2>
-    <div class="faq-item">
-      <button class="faq-question">Сколько стоит диагностика?</button>
-      <div class="faq-answer">
-        <p>Диагностика у нас бесплатная. Вы оплачиваете только ремонт, если соглашаетесь на него.</p>
-      </div>
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <div class="eyebrow"><span></span> Нижний Тагил · Циолковского, 39</div>
+      <h1>Смартфон снова работает. <em>Как надо.</em></h1>
+      <p class="hero-lead">Ремонт телефонов любой сложности в центре Нижнего Тагила. Сначала диагностика и точная цена — затем работа с гарантией.</p>
+      <div class="hero-actions"><button class="primary-button" data-scroll-form>Узнать стоимость <span>→</span></button><div class="mini-proof"><b>4,9</b><span class="stars">★★★★★</span><small>112 оценок в 2ГИС</small></div></div>
+      <div class="hero-notes"><span>✓ Честный ремонт любой сложности</span><span>✓ Ежедневно с 10:00 до 19:00</span></div>
     </div>
-    <div class="faq-item">
-      <button class="faq-question">Сколько времени занимает ремонт?</button>
-      <div class="faq-answer">
-        <p>Простые ремонты выполняем в день обращения. Сложные случаи требуют больше времени, но мы всегда согласовываем сроки заранее.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">Даете ли вы гарантию?</button>
-      <div class="faq-answer">
-        <p>Да, гарантия на все работы до 6 месяцев в зависимости от вида ремонта.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">Какие запчасти вы используете?</button>
-      <div class="faq-answer">
-        <p>Мы используем только проверенные запчасти с гарантией качества.</p>
-      </div>
+    <div class="hero-visual" aria-label="Ремонт смартфона на рабочем столе мастера">
+      <img class="hero-photo" src="master-workbench-hero.png" alt="Мастер ремонтирует смартфон на оборудованном рабочем столе">
+      <div class="floating-card card-time"><span>●</span><div><b>Открыто ежедневно</b><small>с 10:00 до 19:00</small></div></div>
+      <div class="floating-card card-warranty"><span>✓</span><div><b>Ремонт с гарантией</b><small>документы на выполненные работы</small></div></div>
+      <div class="photo-sign"><img src="remplus-logo.png" alt=""><span>Циолковского, 39</span></div>
     </div>
   </section>
 
-  <!-- Отзывы -->
-  <section class="reviews">
-    <h2 style="text-align:center;">Отзывы клиентов</h2>
-    <p style="text-align:center;">
-      <a href="https://2gis.ru/ntagil/geo/70000001051532539" target="_blank" style="color:red; text-decoration:underline;">
-        Читать все отзывы на 2ГИС
-      </a>
-    </p>
+  <section class="trust-strip" aria-label="Факты о сервисном центре"><div><strong>4,9</strong><span>рейтинг в 2ГИС</span></div><div><strong>112</strong><span>оценок клиентов</span></div><div><strong>8</strong><span>популярных брендов</span></div><div><strong>7/7</strong><span>работаем ежедневно</span></div></section>
+  <section class="brand-ticker" aria-label="Ремонтируемые бренды"><span>Apple</span><span>Samsung</span><span>Xiaomi</span><span>Huawei</span><span>Honor</span><span>Realme</span><span>OPPO</span><span>Tecno</span></section>
+
+  <section class="section services" id="services">
+    <div class="section-heading"><div><span class="section-kicker">Ремонт смартфонов</span><h2>От разбитого стекла<br>до сложной платы</h2></div><p>Работаем с популярными брендами. Стоимость и срок называем после осмотра устройства — без ремонта «наугад».</p></div>
+    <div class="services-grid">
+      <article class="service-card"><div class="service-icon">▣</div><h3>Замена дисплея</h3><p>Разбитое стекло, полосы, пятна или неработающий сенсор</p><div class="service-footer"><strong>Узнать цену</strong><button data-service="Замена дисплея">Оставить заявку <span>↗</span></button></div></article>
+      <article class="service-card"><div class="service-icon">▥</div><h3>Замена аккумулятора</h3><p>Телефон быстро разряжается, греется или выключается</p><div class="service-footer"><strong>Узнать цену</strong><button data-service="Замена аккумулятора">Оставить заявку <span>↗</span></button></div></article>
+      <article class="service-card"><div class="service-icon">↯</div><h3>Разъём зарядки</h3><p>Не заряжается, пропадает контакт или не работает быстрая зарядка</p><div class="service-footer"><strong>Узнать цену</strong><button data-service="Разъём зарядки">Оставить заявку <span>↗</span></button></div></article>
+      <article class="service-card"><div class="service-icon">⌁</div><h3>Ремонт платы</h3><p>Сложные неисправности, пайка и восстановление компонентов</p><div class="service-footer"><strong>Диагностика</strong><button data-service="Ремонт платы">Оставить заявку <span>↗</span></button></div></article>
+      <article class="service-card"><div class="service-icon">◌</div><h3>После попадания влаги</h3><p>Чистка, диагностика и восстановление устройства</p><div class="service-footer"><strong>Срочно</strong><button data-service="После попадания влаги">Оставить заявку <span>↗</span></button></div></article>
+      <article class="service-card"><div class="service-icon">◇</div><h3>Стёкла и аксессуары</h3><p>Защитные стёкла, плёнки и аксессуары для смартфонов</p><div class="service-footer"><strong>Подобрать</strong><button data-service="Стёкла и аксессуары">Оставить заявку <span>↗</span></button></div></article>
+    </div>
   </section>
 
-  <!-- Форма -->
-  <section class="form" id="form">
-    <h2>Оставить заявку</h2>
-    <form onsubmit="sendToTelegram(event)">
-      <input type="text" id="name" placeholder="Ваше имя" required>
-      <input type="text" id="phone" placeholder="Телефон" required>
-      <input type="text" id="device" placeholder="Марка и модель устройства" required>
-      <textarea id="problem" rows="4" placeholder="Опишите проблему" required></textarea>
-      <button type="submit">Отправить в Telegram</button>
+  <section class="section process" id="process">
+    <div class="section-heading light"><div><span class="section-kicker">Всё прозрачно</span><h2>Три шага до<br>исправного телефона</h2></div><p>Сначала разбираемся в причине, затем согласуем решение — и только после этого ремонтируем.</p></div>
+    <div class="steps"><article><span class="step-number">01</span><div class="step-line"></div><h3>Принесите устройство</h3><p>Ждём вас на Циолковского, 39. Можно заранее описать проблему в заявке.</p></article><article><span class="step-number">02</span><div class="step-line"></div><h3>Проведём диагностику</h3><p>Найдём реальную причину, назовём стоимость и срок ремонта.</p></article><article><span class="step-number">03</span><div class="step-line"></div><h3>Вернём с гарантией</h3><p>Проверим работу устройства и выдадим документы на выполненный ремонт.</p></article></div>
+  </section>
+
+  <section class="section quality"><div class="quality-panel"><div class="quality-photo"><img src="master-microsoldering.png" alt="Точная пайка платы смартфона под микроскопом"><span>Точная работа мастера</span></div><div class="quality-copy"><span class="section-kicker">Сервис, которому доверяют</span><h2>Ремонтируем то,<br>от чего другие отказались</h2><p>В отзывах клиенты особенно отмечают сложный ремонт смартфонов, понятные цены, скорость и доброжелательную приёмку.</p></div><ul><li><span>01</span>Диагностика реальной причины</li><li><span>02</span>Цена до начала ремонта</li><li><span>03</span>Гарантия на выполненные работы</li></ul></div></section>
+
+  <section class="section review-proof"><div class="section-heading"><div><span class="section-kicker">По отзывам клиентов</span><h2>Быстро. Честно.<br>С результатом.</h2></div><div class="rating-big"><strong>4,9</strong><span>★★★★★</span><small>112 оценок в 2ГИС</small></div></div><div class="proof-grid"><article><span>01</span><h3>Сложные случаи</h3><p>Берутся за телефоны, которые не смогли восстановить в других сервисах.</p></article><article><span>02</span><h3>Понятная цена</h3><p>Объясняют причину неисправности и заранее согласовывают стоимость.</p></article><article><span>03</span><h3>Быстрый ремонт</h3><p>Многие типовые работы выполняют в день обращения или даже при клиенте.</p></article></div><a class="reviews-link" href="https://2gis.ru/ntagil/firm/70000001051532539/tab/reviews" target="_blank" rel="noreferrer">Читать отзывы в 2ГИС ↗</a></section>
+
+  <section class="request-section" id="request">
+    <div class="request-copy"><span class="section-kicker">Узнать стоимость</span><h2>Что случилось<br>с устройством?</h2><p>Оставьте номер и кратко опишите неисправность. Мы свяжемся с вами и подскажем следующий шаг.</p><div class="callback-time"><span>10–19</span><small>на связи<br>ежедневно</small></div></div>
+    <form class="lead-form" id="lead-form">
+      <label>Ваше имя<input name="name" type="text" placeholder="Как к вам обращаться" required maxlength="80" autocomplete="name"></label>
+      <label>Телефон<input name="phone" type="tel" placeholder="+7 (___) ___-__-__" required maxlength="30" autocomplete="tel"></label>
+      <label>Что нужно сделать<select name="service" id="service"><option value="" selected>Выберите услугу</option><option>Замена дисплея</option><option>Замена аккумулятора</option><option>Разъём зарядки</option><option>Ремонт платы</option><option>После попадания влаги</option><option>Стёкла и аксессуары</option><option>Нужна диагностика</option></select></label>
+      <label>Модель и проблема<textarea name="comment" placeholder="Например: iPhone 12 не заряжается" maxlength="500"></textarea></label>
+      <input class="honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных для связи по заявке</span></label>
+      <button class="submit-button" type="submit">Узнать стоимость <span>→</span></button>
+      <div class="form-message" id="form-message" aria-live="polite"></div>
     </form>
   </section>
 
-  <!-- Контакты -->
-  <section class="contacts">
-    📍 Нижний Тагил, ул. Циолковского, 39 <br>
-    📞 <a href="tel:+79120412121">+7 912 041-21-21</a> <br>
-    ✉️ Telegram: <a href="https://t.me/ermakov_remont" target="_blank">@ermakov_remont</a>
-  </section>
+  <section class="section contacts" id="contacts"><div class="contact-card"><span class="section-kicker">Ждём вас в сервисе</span><h2>Нижний Тагил<br>Циолковского, 39</h2><div class="contact-details"><a href="tel:+79120412121">+7 912 041-21-21</a><a href="mailto:remplus96@mail.ru">remplus96@mail.ru</a><p>Ежедневно · 10:00–19:00</p></div><a class="map-link" href="https://2gis.ru/ntagil/firm/70000001051532539" target="_blank" rel="noreferrer">Построить маршрут в 2ГИС <span>↗</span></a></div><div class="map-art" aria-label="Схематичная карта расположения сервиса"><div class="road road-a"></div><div class="road road-b"></div><div class="road road-c"></div><div class="map-pin"><span>РЕМ+</span><small>Циолковского, 39</small></div></div></section>
 
-  <footer>
-    © РемПлюс, 2025. Все права защищены.
-  </footer>
-
-  <script>
-    // Скрипт для FAQ
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const answer = button.nextElementSibling;
-        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-      });
-    });
-
-    // Отправка заявки в Telegram (через открытие диалога)
-    function sendToTelegram(event) {
-      event.preventDefault();
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const device = document.getElementById('device').value;
-      const problem = document.getElementById('problem').value;
-
-      const message = `Заявка на ремонт:%0AИмя: ${name}%0AТелефон: ${phone}%0AУстройство: ${device}%0AПроблема: ${problem}`;
-      window.open(`https://t.me/ermakov_remont?text=${message}`, '_blank');
-    }
-  </script>
+  <footer class="footer"><a class="brand footer-brand" href="#top"><img class="brand-logo" src="remplus-logo.png" alt="Логотип РемПлюс"><span class="brand-copy">РемПлюс<small>сервисный центр</small></span></a><p>Ремонт телефонов и мобильной электроники.<br>Нижний Тагил, ул. Циолковского, 39.</p><a class="footer-phone" href="tel:+79120412121">+7 912 041-21-21</a><div class="footer-bottom"><span>© <span id="year"></span> РемПлюс</span><span>Информация на сайте не является публичной офертой</span></div></footer>
+</main>
+<script>
+  const LEAD_API_URL = "https://functions.yandexcloud.net/d4erjoem1urieft7ofkq";
+  const request = document.getElementById("request");
+  document.querySelectorAll("[data-scroll-form]").forEach(el => el.addEventListener("click", () => request.scrollIntoView({behavior:"smooth",block:"center"})));
+  document.querySelectorAll("[data-service]").forEach(el => el.addEventListener("click", () => { document.getElementById("service").value = el.dataset.service; request.scrollIntoView({behavior:"smooth",block:"center"}); }));
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("lead-form").addEventListener("submit", async event => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button[type=submit]");
+    const message = document.getElementById("form-message");
+    button.disabled = true; button.firstChild.textContent = "Отправляем… "; message.textContent = ""; message.className = "form-message";
+    try {
+      const response = await fetch(LEAD_API_URL, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(form).entries()))});
+      if (!response.ok) throw new Error();
+      form.reset(); message.textContent = "Готово! Заявка принята — свяжемся с вами в рабочее время."; message.classList.add("success");
+    } catch (_) { message.textContent = "Не удалось отправить заявку. Позвоните нам: +7 912 041-21-21."; message.classList.add("error"); }
+    finally { button.disabled = false; button.firstChild.textContent = "Узнать стоимость "; }
+  });
+</script>
 </body>
 </html>
