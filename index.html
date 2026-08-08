@@ -77,9 +77,34 @@
 
   <footer class="footer"><a class="brand footer-brand" href="#top"><img class="brand-logo" src="remplus-logo.png" alt="Логотип РемПлюс"><span class="brand-copy">РемПлюс<small>сервисный центр</small></span></a><p>Ремонт телефонов и мобильной электроники.<br>Нижний Тагил, ул. Циолковского, 39.</p><a class="footer-phone" href="tel:+79120412121">+7 912 041-21-21</a><div class="footer-bottom"><span>© <span id="year"></span> РемПлюс</span><span>Информация на сайте не является публичной офертой</span></div></footer>
 </main>
+
+<div class="success-modal" id="success-modal" hidden>
+  <button class="success-modal__backdrop" type="button" data-success-close aria-label="Закрыть окно"></button>
+  <section class="success-modal__card" role="dialog" aria-modal="true" aria-labelledby="success-modal-title" aria-describedby="success-modal-text">
+    <button class="success-modal__close" type="button" data-success-close aria-label="Закрыть окно">×</button>
+    <span class="success-modal__icon" aria-hidden="true">✓</span>
+    <h2 id="success-modal-title">Заявка отправлена</h2>
+    <p id="success-modal-text">Мы свяжемся с вами в рабочие часы — ежедневно с 10:00 до 19:00.</p>
+    <button class="success-modal__button" type="button" data-success-close>Понятно</button>
+  </section>
+</div>
 <script>
   const LEAD_API_URL = "https://functions.yandexcloud.net/d4erjoem1urieft7ofkq";
   const request = document.getElementById("request");
+  const successModal = document.getElementById("success-modal");
+  const successModalButton = successModal.querySelector(".success-modal__button");
+  const openSuccessModal = () => {
+    if (!window.matchMedia("(max-width: 640px)").matches) return;
+    successModal.hidden = false;
+    document.body.classList.add("modal-open");
+    successModalButton.focus();
+  };
+  const closeSuccessModal = () => {
+    successModal.hidden = true;
+    document.body.classList.remove("modal-open");
+  };
+  successModal.querySelectorAll("[data-success-close]").forEach(el => el.addEventListener("click", closeSuccessModal));
+  document.addEventListener("keydown", event => { if (event.key === "Escape" && !successModal.hidden) closeSuccessModal(); });
   document.querySelectorAll("[data-scroll-form]").forEach(el => el.addEventListener("click", () => request.scrollIntoView({behavior:"smooth",block:"center"})));
   document.querySelectorAll("[data-service]").forEach(el => el.addEventListener("click", () => { document.getElementById("service").value = el.dataset.service; request.scrollIntoView({behavior:"smooth",block:"center"}); }));
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -92,7 +117,7 @@
     try {
       const response = await fetch(LEAD_API_URL, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(form).entries()))});
       if (!response.ok) throw new Error();
-      form.reset(); message.textContent = "Готово! Заявка принята — свяжемся с вами в рабочее время."; message.classList.add("success");
+      form.reset(); message.textContent = "Готово! Заявка принята — свяжемся с вами в рабочее время."; message.classList.add("success"); openSuccessModal();
     } catch (_) { message.textContent = "Не удалось отправить заявку. Позвоните нам: +7 912 041-21-21."; message.classList.add("error"); }
     finally { button.disabled = false; button.firstChild.textContent = "Узнать стоимость "; }
   });
