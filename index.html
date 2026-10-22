@@ -100,7 +100,7 @@
   </section>
 </div>
 <script>
-  const LEAD_API_URL = "https://functions.yandexcloud.net/d4erjoem1urieft7ofkq";
+  const LEAD_API_URL = "https://crm.remplus-nt.ru/landing-api";
   const request = document.getElementById("request");
   const successModal = document.getElementById("success-modal");
   const successModalButton = successModal.querySelector(".success-modal__button");
@@ -119,6 +119,7 @@
   document.querySelectorAll("[data-scroll-form]").forEach(el => el.addEventListener("click", () => request.scrollIntoView({behavior:"smooth",block:"center"})));
   document.querySelectorAll("[data-service]").forEach(el => el.addEventListener("click", () => { document.getElementById("service").value = el.dataset.service; request.scrollIntoView({behavior:"smooth",block:"center"}); }));
   document.getElementById("year").textContent = new Date().getFullYear();
+  let lastSubmission = null;
   document.getElementById("lead-form").addEventListener("submit", async event => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -126,8 +127,13 @@
     const message = document.getElementById("form-message");
     button.disabled = true; button.firstChild.textContent = "Отправляем… "; message.textContent = ""; message.className = "form-message";
     try {
-      const response = await fetch(LEAD_API_URL, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(form).entries()))});
+      const payload = Object.fromEntries(new FormData(form).entries());
+      const fingerprint = JSON.stringify(payload);
+      if (!lastSubmission || lastSubmission.fingerprint !== fingerprint) lastSubmission = {fingerprint, id: crypto.randomUUID()};
+      payload.requestId = lastSubmission.id;
+      const response = await fetch(LEAD_API_URL, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
       if (!response.ok) throw new Error();
+      lastSubmission = null;
       form.reset(); message.textContent = "Готово! Заявка принята — свяжемся с вами в рабочее время."; message.classList.add("success"); openSuccessModal();
     } catch (_) { message.textContent = "Не удалось отправить заявку. Позвоните нам: +7 912 041-21-21."; message.classList.add("error"); }
     finally { button.disabled = false; button.firstChild.textContent = "Узнать стоимость "; }
